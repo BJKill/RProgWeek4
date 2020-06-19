@@ -54,7 +54,37 @@ cm <- colMeans(my_pois)
 hist(cm)
 1
 
+## Section 15: Base Graphics
+15
+data(cars)
+?cars
+head(cars)
+plot(cars)    # 'plot' is short for scatterplot. auto labels (speed vs dist) and ticks axes nicely (nice whole numbers)
+?plot
+plot(x = cars$speed, y = cars$dist)  # same plot, but with cars$speed and cars$dist as axis labels
+plot(x = cars$dist, y = cars$speed)  # switched axes
 
+plot(x = cars$speed, y = cars$dist, xlab = "Speed")
+plot(x = cars$speed, y = cars$dist, ylab = "Stopping Distance")
+plot(x = cars$speed, y = cars$dist, xlab = "Speed", ylab = "Stopping Distance")
+
+plot(cars, main = "My Plot")
+plot(cars, sub = "My Plot Subtitle")
+plot(cars, col = 2)
+plot(cars, xlim = c(10,15))
+plot(cars, pch = 2)
+
+data(mtcars)
+play()
+dim(mtcars)
+str(mtcars)
+head(mtcars)
+nxt()
+
+?boxplot
+boxplot(formula = mpg ~ cyl, data = mtcars) ## <- reversing order DOES NOT WORK
+hist(mtcars$mpg)
+2
 
 
 
