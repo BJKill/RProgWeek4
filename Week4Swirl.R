@@ -38,8 +38,21 @@ flips <- sample(c(0,1), 100, replace = TRUE, prob = c(0.3,0.7))
 flips
 sum(flips)                      # gave us 61 - meaning we flipped 61 heads. Not unlikely since pr(H) = 0.7
 ?rbinom
-rbinom(1, 100, 0.7)             # gave us 68 - meaning we flipped 68 heads. Not unlikely since pr(H) = 0.7
+rbinom(1, 100, 0.7)             # 1 obs of size 100 returned 68 - meaning we flipped 68 heads. Not unlikely since pr(H) = 0.7
+flips2 <- rbinom(100, 1, 0.7)   # 100 obs of size 1 gives us a vector of 100 1's and 0's.
+flips2
+sum(flips2)                     # summed to 73 - meaning we flipped 73 heads. Again, not unlikely at all.
 
+?rnorm
+rnorm(10)
+rnorm(10, 100, 25)
+
+rpois(5, 10)
+my_pois <- replicate(100, rpois(5, 10)) # created a matrix of 100 columns containing 5 random Poisson values w/ lambda=10.
+my_pois                                 # displays a matrix with dimensions 5 x 100
+cm <- colMeans(my_pois)
+hist(cm)
+1
 
 
 
