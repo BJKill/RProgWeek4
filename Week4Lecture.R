@@ -169,16 +169,33 @@ system.time(svd(x))
 ## Beyond system.time()
 # Using system.time() allows you to test certian functions or code blocks to see if they are taking excessive amounts of time
 # Assumes you already know where the problem is and can call system.time() on it
-# What if you don't know where to start?
+# What if you don't know where to start?  Profiler.
 
 
+## The R Profiler
+
+# The Rprof() function starts the profiler in R
+#       - R must be compiled with profiler support (but this is usually the case)
+# The summaryRprof() function summarizes the output from Rprof() (otherwise it's not readable)
+
+### DO NOT USE system.time() and Rprof() together or YOU WILL BE SAD!! ###
+
+# Rprof() keeps track of the function call stack at regularly sampled intervals and tabulates how much time is spent in each function
+# Default sampling interval is 0.02 seconds
+# NOTE: if your code runs very quickly, the profiler is not useful.
+
+# Using summaryRprof()
+# It tabulates the R profiler output and caluclates how much time is spent in which function.
+# There are two methods for normalizing the data
+#       - "by.total" divides the time spent in each function by the total run time
+#       - "by.self" does the same but first subtracts out the time spent in functions above in the call stack
 
 
-
-
-
-
-
+## Summary
+# Rprof() runs the profiler for performance analysis of R code
+# summaryRprof() summarizes the output of Rprof and gives % of time spent in each function (by.self is often most useful)
+# Good to break your code into functions so that the profiler can give useful information about where time is spent
+# C or Fortran code is not profiled.
 
 
 
