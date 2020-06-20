@@ -1,41 +1,21 @@
 ### Programming Assignment 3
 
-#outcome <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
-#head(outcome)
-#str(outcome)
-#names(outcome)
+outcome <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
+head(outcome)
+str(outcome)
+names(outcome)
 
-#outcome[,11] <- as.numeric(outcome[,11])
-#hist(outcome[,11])
+## raw histogram. can make it better with formatting
+outcome[,11] <- as.numeric(outcome[,11])
+hist(outcome[,11])
 
-best <- function(state = "character", outcome = "character") {
-        ## Read outcome data
-        data <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
-        data_split <- split(data, data$State)
-        if(is.element(state, state.abb) == FALSE) {
-                stop("invalid state")
-        }
-        data_state <- data_split[[state]]
-        str(data_state)
-        if(outcome == "heart attack") {
-                data_good <- as.numeric(data_split[[state]][[11]])
-        }
-        else if(outcome == "heart failure") {
-                data_good <- as.numeric(data_split[[state]][[17]])
-        }
-        else if(outcome == "pneumonia") {
-                data_good <- as.numeric(data_split[[state]][[23]])
-        }
-        else {
-                stop("invalid outcome")
-        }
-        ## Check that state and outcome are valid
-        str(data_good)
-        ## Return Hospital name in the state with the lowest 30-day death rate
-        
-        
-}
 
+best("TX", "heart attack")
+best("TX", "heart failure")
+best("MD", "heart attack")
+best("MD", "pneumonia")
+best("BB", "heart attack")
+best("NY", "hert attack")
 
 
 
