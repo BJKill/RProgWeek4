@@ -27,18 +27,26 @@ rankhospital <- function(state, outcome, num = "best") {
                 stop("invalid outcome")
         }
         
-        ## Return Hospital name in the state with the given rank 30-day death rate
+        ## Return Hospital name in the state with the given rank 30-day death rate. Ties broken by hospital name
         data1[,good_col] <- as.numeric(data1[,good_col])
         data_good <- data1[which(data1$State == state), ]
-        print(head(data_good))
-        data_good <- data_good[order(data_good[,good_col], "Hospital.Name")]
-        print(head(data_good))
+        #print(head(data_good))
+        data_good <- data_good[order(data_good[, good_col], data_good$Hospital.Name), ]
+        #print(head(data_good))
+        
         ##check validity of rank
+        vect <- data1[, good_col]
+        bad <- is.na(vect)
+        good_vect <- vect[!bad]
+        val_num <- length(good_vect)
+        if(num > val_num) {
+                return(NA)
+        }
         
         min_rate <- min(data_good[, good_col], na.rm = TRUE)
         hos_name <- data_good[which(data_good[, good_col] == min_rate), "Hospital.Name"]
         hos_name <- sort(hos_name)
-        print(hos_name[1])
+        print(hos_name[num])
 }
 
 
