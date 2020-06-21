@@ -1,10 +1,6 @@
 ### Ranking Hospitals By Outcome In A State
 
 rankhospital <- function(state, outcome, num = "best") {
-        ## Read outcome data
-        ## Check that state and outcome are valid
-        ## Return hospital name in that state with the given rank
-        ## 30-day death rate
         ## Reads outcome data
         data1 <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
         
@@ -30,9 +26,7 @@ rankhospital <- function(state, outcome, num = "best") {
         ## Return Hospital name in the state with the given rank 30-day death rate. Ties broken by hospital name
         data1[,good_col] <- as.numeric(data1[,good_col])
         data_good <- data1[which(data1$State == state), ]
-        #print(head(data_good))
         data_good <- data_good[order(data_good[, good_col], data_good$Hospital.Name), ]
-        #print(head(data_good))
         
         ##check validity of rank
         vect <- data_good[, good_col]
@@ -52,11 +46,6 @@ rankhospital <- function(state, outcome, num = "best") {
         else {
                 return(data_good$Hospital.Name[num])
         }
-        
-        #min_rate <- min(data_good[, good_col], na.rm = TRUE)
-        #hos_name <- data_good[which(data_good[, good_col] == min_rate), "Hospital.Name"]
-        #hos_name <- sort(hos_name)
-        #print(hos_name[num])
 }
 
 
