@@ -40,11 +40,11 @@ rankhospital <- function(state, outcome, num = "best") {
                 return(data_good$Hospital.Name[val_num])
         }
         
-        else if(num > val_num || num < 1) {
-                return(NA)
+        else if((num > 0) && (num <= val_num)) {
+                return(data_good$Hospital.Name[num])
         }
         else {
-                return(data_good$Hospital.Name[num])
+                return(NA)
         }
 }
 
