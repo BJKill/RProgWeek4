@@ -23,6 +23,9 @@ rankhospital("MD", "heart attack", "worst")
 rankhospital("MN", "heart attack", 5000)
 
 
+head(rankall("heart attack", 20), 10)
+tail(rankall("pneumonia", "worst"), 3)
+tail(rankall("heart failure"), 10)
 
 
 
