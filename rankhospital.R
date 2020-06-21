@@ -40,7 +40,7 @@ rankhospital <- function(state, outcome, num = "best") {
         hos_name <- sort(hos_name)
         print(hos_name[1])
 }
-}
+
 
 
 
