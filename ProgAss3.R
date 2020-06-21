@@ -28,11 +28,23 @@ tail(rankall("pneumonia", "worst"), 3)
 tail(rankall("heart failure"), 10)
 
 
+## QUIZ FOR PROGRAMMING ASSIGNMENT 3
+best("SC", "heart attack")                        # A1. "MUSC MEDICAL CENTER"
+best("NY", "pneumonia")                           # A2. "MAIMONIDES MEDICAL CENTER"
+best("AK", "pneumonia")                           # A3. "YUKON KUSKOKWIM DELTA REG HOSPITAL"
+rankhospital("NC", "heart attack", "worst")       # A4. "WAYNE MEMORIAL HOSPITAL"
+rankhospital("WA", "heart attack", 7)             # A5. "YAKIMA VALLEY MEMORIAL HOSPITAL"
+rankhospital("TX", "pneumonia", 10)               # A6. "SETON SMITHVILLE REGIONAL HOSPITAL"
+rankhospital("NY", "heart attack", 7)             # A7. "BELLEVUE HOSPITAL CENTER"
 
+r <- rankall("heart attack", 4)
+as.character(subset(r, state == "HI")$hospital)   # A8. "CASTLE MEDICAL CENTER"
 
+r <- rankall("pneumonia", "worst")
+as.character(subset(r, state == "NJ")$hospital)   # A9. "BERGEN REGIONAL MEDICAL CENTER"
 
-
-
+r <- rankall("heart failure", 10)
+as.character(subset(r, state == "NV")$hospital)   # A10. "RENOWN SOUTH MEADOWS MEDICAL CENTER"
 
 
 
