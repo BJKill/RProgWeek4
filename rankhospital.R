@@ -35,18 +35,28 @@ rankhospital <- function(state, outcome, num = "best") {
         #print(head(data_good))
         
         ##check validity of rank
-        vect <- data1[, good_col]
+        vect <- data_good[, good_col]
         bad <- is.na(vect)
-        good_vect <- vect[!bad]
-        val_num <- length(good_vect)
-        if(num > val_num) {
-                return(NA)
+        data_good <- data_good[!bad, ]
+        val_num <- length(data_good[, good_col])
+        if(num == "best") {
+                return(data_good$Hospital.Name[1])
+        }
+        else if(num == "worst") {
+                return(data_good$Hospital.Name[val_num])
         }
         
-        min_rate <- min(data_good[, good_col], na.rm = TRUE)
-        hos_name <- data_good[which(data_good[, good_col] == min_rate), "Hospital.Name"]
-        hos_name <- sort(hos_name)
-        print(hos_name[num])
+        else if(num > val_num || num < 1) {
+                return(NA)
+        }
+        else {
+                return(data_good$Hospital.Name[num])
+        }
+        
+        #min_rate <- min(data_good[, good_col], na.rm = TRUE)
+        #hos_name <- data_good[which(data_good[, good_col] == min_rate), "Hospital.Name"]
+        #hos_name <- sort(hos_name)
+        #print(hos_name[num])
 }
 
 

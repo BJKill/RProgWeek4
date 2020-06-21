@@ -18,9 +18,9 @@ best("BB", "heart attack")
 best("NY", "hert attack")
 
 
-
-
-
+rankhospital("TX", "heart failure", 4)
+rankhospital("MD", "heart attack", "worst")
+rankhospital("MN", "heart attack", 5000)
 
 
 
